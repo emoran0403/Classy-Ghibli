@@ -47,18 +47,23 @@ class App extends React.Component {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route exact path="/films">
+
+          <Route exact path="/films" render={(props) => <Films {...props} info={this.state} />} />
+
+          <Route exact path="/films/:filmid" render={(props) => <FilmDetails {...props} info={this.state} />} />
+
+          {/* <Route exact path="/films">
             <Films info={this.state} />
-          </Route>
+          </Route> */}
           <Route exact path="/characters">
             <Characters info={this.state} />
           </Route>
           <Route exact path="/locations">
             <Locations info={this.state} />
           </Route>
-          <Route exact path="/films/:filmid">
+          {/* <Route exact path="/films/:filmid">
             <FilmDetails info={this.state} />
-          </Route>
+          </Route> */}
           <Route exact path="/characters/:characterid">
             <CharacterDetails info={this.state} />
           </Route>
