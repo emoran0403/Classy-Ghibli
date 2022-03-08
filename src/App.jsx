@@ -49,27 +49,13 @@ class App extends React.Component {
           </Route>
 
           <Route exact path="/films" render={(props) => <Films {...props} info={this.state} />} />
-
           <Route exact path="/films/:filmid" render={(props) => <FilmDetails {...props} info={this.state} />} />
 
-          {/* <Route exact path="/films">
-            <Films info={this.state} />
-          </Route> */}
-          <Route exact path="/characters">
-            <Characters info={this.state} />
-          </Route>
-          <Route exact path="/locations">
-            <Locations info={this.state} />
-          </Route>
-          {/* <Route exact path="/films/:filmid">
-            <FilmDetails info={this.state} />
-          </Route> */}
-          <Route exact path="/characters/:characterid">
-            <CharacterDetails info={this.state} />
-          </Route>
-          <Route exact path="/locations/:locationid">
-            <LocationDetails info={this.state} />
-          </Route>
+          <Route exact path="/characters" render={(props) => <Characters {...props} info={this.state} />} />
+          <Route exact path="/characters/:characterid" render={(props) => <CharacterDetails {...props} info={this.state} />} />
+
+          <Route exact path="/locations" render={(props) => <Locations {...props} info={this.state} />} />
+          <Route exact path="/locations/:locationid" render={(props) => <LocationDetails {...props} info={this.state} />} />
         </Switch>
       </>
     );
