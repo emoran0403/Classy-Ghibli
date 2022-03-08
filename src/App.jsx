@@ -15,12 +15,15 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      // initializes state to contain empty arrays, within which the api data will be stored
       films: [],
       characters: [],
       locations: [],
     };
   }
+
   componentDidMount() {
+    // when the component first loads, get the data from the api, and set it to state
     fetch("https://ghibliapi.herokuapp.com/films")
       .then((res1) => res1.json())
       .then((data1) => this.setState({ films: data1 }));
@@ -35,20 +38,34 @@ class App extends React.Component {
   }
 
   render() {
+    // navbar should always be rendered, so it is outside of Switch
+    // react-router-dom v5 has the opening and closing Route tags
     return (
       <>
-        <BrowserRouter>
-          <Navbar />
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/films" component={Films} />
-            <Route exact path="/characters" component={Characters} />
-            <Route exact path="/locations" component={Locations} />
-            <Route exact path="/films/:filmid" component={FilmDetails} />
-            <Route exact path="/characters/:characterid" component={CharacterDetails} />
-            <Route exact path="/locations/:locationid" component={LocationDetails} />
-          </Switch>
-        </BrowserRouter>
+        <Navbar />
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route exact path="/films">
+            <Films info={this.state} />
+          </Route>
+          <Route exact path="/characters">
+            <Characters info={this.state} />
+          </Route>
+          <Route exact path="/locations">
+            <Locations info={this.state} />
+          </Route>
+          <Route exact path="/films/:filmid">
+            <FilmDetails info={this.state} />
+          </Route>
+          <Route exact path="/characters/:characterid">
+            <CharacterDetails info={this.state} />
+          </Route>
+          <Route exact path="/locations/:locationid">
+            <LocationDetails info={this.state} />
+          </Route>
+        </Switch>
       </>
     );
   }
