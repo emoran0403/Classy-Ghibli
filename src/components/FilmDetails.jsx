@@ -55,7 +55,7 @@ class FilmDetails extends React.Component {
                     Directed by: {this.state.currentFilm.director} | Produced by: {this.state.currentFilm.producer}
                   </h6>
                   <p className="card-text">{this.state.currentFilm.description}</p>
-                  {this.state.currentFilm.people.length >= 1 ? <h5>Characters:</h5> : <h5>No cast listed :/</h5>}
+                  {this.state.currentFilm.people.length >= 2 ? <h5>Characters:</h5> : <h5>No cast listed :/</h5>}
                   <ul>{this.state.currentFilm && this.getCast().map((item) => <li key={item}>{item}</li>)}</ul>
 
                   <footer className="blockquote-footer">
