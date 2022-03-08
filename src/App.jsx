@@ -14,7 +14,26 @@ import Navbar from "./components/Navbar";
 class App extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      films: [],
+      characters: [],
+      locations: [],
+    };
   }
+  componentDidMount() {
+    fetch("https://ghibliapi.herokuapp.com/films")
+      .then((res1) => res1.json())
+      .then((data1) => this.setState({ films: data1 }));
+
+    fetch("https://ghibliapi.herokuapp.com/people")
+      .then((res2) => res2.json())
+      .then((data2) => this.setState({ characters: data2 }));
+
+    fetch("https://ghibliapi.herokuapp.com/locations")
+      .then((res3) => res3.json())
+      .then((data3) => this.setState({ locations: data3 }));
+  }
+
   render() {
     return (
       <>
